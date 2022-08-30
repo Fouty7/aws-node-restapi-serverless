@@ -1,27 +1,10 @@
-const { v4 } = require("uuid")
 const AWS = require("aws-sdk")
 
-const addTodo = async (event) => {
+const fetchTodos = async (event) => {
 
   const dynamodb = AWS.DynamoDB.DocumentClient()
 
-  const { todo } = JSON.parse(event.body);
-  const createdAt = new Date();
-  const id = v4();
-
   console.log("This is an id", id)
-
-  const newTodo = {
-    id,
-    todo,
-    createdAt,
-    completed: false
-  }
-
-  await dynamodb.put({
-    TableName: "TodoTable",
-    item: newTodo
-  })
 
   return {
     statusCode: 200,
@@ -30,5 +13,5 @@ const addTodo = async (event) => {
 };
 
 module.exports = {
-  handler: addTodo
+  handler: fetchTodos
 }
