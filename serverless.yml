@@ -17,8 +17,14 @@ functions:
     handler: src/addTodo.handler
     events:
       - httpApi:
-          path: /
+          path: /addTodo
           method: post
+  fetchTodos:
+    handler: src/fetchTodos.handler
+    events:
+      - httpApi:
+          path: /todos
+          method: get    
 
 resources:
   Resources:

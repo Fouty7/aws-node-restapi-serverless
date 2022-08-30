@@ -21,7 +21,7 @@ const addTodo = async (event) => {
   await dynamodb.put({
     TableName: "TodoTable",
     item: newTodo
-  })
+  }).promise()
 
   return {
     statusCode: 200,
